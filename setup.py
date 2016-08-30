@@ -3,6 +3,9 @@
 import os
 from setuptools import setup, find_packages
 
+from tests import test_cmd
+
+
 ROOT = os.path.dirname(__file__)
 
 
@@ -29,4 +32,5 @@ setup(
         "Programming Language :: Python",
         "Framework :: Django",
     ],
+    cmdclass={'test': test_cmd.TestCommand}
 )
