@@ -5,7 +5,6 @@ from django.db.models import signals
 from django.dispatch import receiver
 
 from . import app_settings
-from . import apps
 from . import sync
 
 
@@ -17,7 +16,7 @@ def push_data(sender, instance, **kwargs):
 @receiver(signals.post_migrate)
 def sync_model(sender, app_config, **kwargs):
     """Push django model data to google fusion table."""
-    if isinstance(sender, apps.FusionTablesConfig):
+    if django.apps.apps.ready:
         for model_string in app_settings.MODELS_TO_SYNC:
             model_class = django.apps.apps.get_model(model_string)
             signals.post_save.connect(push_data, sender=model_class)
