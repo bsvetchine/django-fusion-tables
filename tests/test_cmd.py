@@ -1,3 +1,4 @@
+import base64
 import os
 from distutils.core import Command
 
@@ -14,7 +15,8 @@ class TestCommand(Command):
 
     def create_client_secret_file(self):
         client_secret = open("/tmp/client_secret.json", "w")
-        client_secret.write(os.environ.get("CLIENT_SECRET"))
+        data = os.environ.get("CLIENT_SECRET")
+        client_secret.write(base64.b64decode(data))
         client_secret.close()
 
     def configure_settings(self):
