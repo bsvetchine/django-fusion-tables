@@ -15,7 +15,7 @@ class TestCommand(Command):
 
     def create_client_secret_file(self):
         client_secret = open("/tmp/client_secret.json", "w")
-        data = os.environ.get("CLIENT_SECRET")
+        data = os.environ.get("CLIENT_SECRET").decode("utf-8")
         client_secret.write(base64.b64decode(data))
         client_secret.close()
 
