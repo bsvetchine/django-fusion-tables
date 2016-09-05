@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os.path
+import os
 from setuptools import setup, find_packages
 
 from tests import test_cmd
