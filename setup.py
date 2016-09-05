@@ -19,7 +19,7 @@ setup(
     url="https://github.com/bsvetchine/django-fusion-tables",
     license="MIT",
     description="",
-    long_description=read("README.md"),
+    long_description=read("README.rst"),
     author="Bertrand Svetchine",
     author_email="bertrand.svetchine@gmail.com",
     packages=find_packages(),
