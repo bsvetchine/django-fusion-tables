@@ -1,3 +1,4 @@
+import os
 from distutils.core import Command
 
 
@@ -10,6 +11,11 @@ class TestCommand(Command):
 
     def finalize_options(self):
         pass
+
+    def create_client_secret_file(self):
+        client_secret = open("/tmp/client_secret.json", "w")
+        client_secret.write(os.environ.get("CLIENT_SECRET"))
+        client_secret.close()
 
     def configure_settings(self):
         from django.conf import settings
@@ -36,6 +42,7 @@ class TestCommand(Command):
     def run(self):
         import django
         from django.core.management import call_command
+        self.create_client_secret_file()
         self.configure_settings()
         django.setup()
         call_command("test", "fusion_tables")
