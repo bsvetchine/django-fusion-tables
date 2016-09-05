@@ -12,6 +12,7 @@ ROOT = os.path.dirname(__file__)
 def read(fname):
     return open(os.path.join(ROOT, fname)).read()
 
+
 setup(
     name="django-fusion-tables",
     version="0.9",
@@ -23,6 +24,7 @@ setup(
     author_email="bertrand.svetchine@gmail.com",
     packages=find_packages(),
     include_package_data=True,
+    install_requires=read("requirements.txt").splitlines(),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
